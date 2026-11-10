@@ -28,7 +28,7 @@ const ProfileScreen = () => {
 
       {/* Blue header with avatar */}
       <View style={styles.header}>
-        <Image source={require("../assets/avatar.jpg")} style={styles.avatar} resizeMode="contain" />
+        <Image source={require("../assets/avatar1.jpg")} style={styles.avatar} resizeMode="contain" />
       </View>
 
       {/* Overlapping profile card */}

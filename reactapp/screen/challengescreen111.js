@@ -6,7 +6,7 @@ const ChallengePhotosScreen = () => (
     title="Photos"
     endpoint="https://jsonplaceholder.typicode.com/photos"
     fields={["title"]}
-    imageField="url"
+    getImageUri={(item) => `https://picsum.photos/seed/${item.id}/100`}
   />
 );
 

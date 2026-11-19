@@ -3,11 +3,12 @@ import {
   View,
   Text,
   FlatList,
+  Image,
   StyleSheet,
   ActivityIndicator,
 } from "react-native";
 
-const RemoteList = ({ title, endpoint, fields }) => {
+const RemoteList = ({ title, endpoint, fields, imageField }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -47,6 +48,9 @@ const RemoteList = ({ title, endpoint, fields }) => {
         renderItem={({ item }) => (
           <View style={styles.row}>
             <Text style={styles.id}>#{item.id}</Text>
+            {imageField && item[imageField] ? (
+              <Image source={{ uri: item[imageField] }} style={styles.image} />
+            ) : null}
             {fields.map((field) => (
               <Text key={field} style={styles.text}>
                 {item[field]}
@@ -75,6 +79,7 @@ const styles = StyleSheet.create({
   },
   id: { fontWeight: "700", color: "#2563eb", marginBottom: 4 },
   text: { fontSize: 15, color: "#111827" },
+  image: { width: 100, height: 100, borderRadius: 8, marginBottom: 8 },
   error: { color: "#b91c1c", marginBottom: 10 },
 });
 

@@ -5,7 +5,8 @@ const ChallengePhotosScreen = () => (
   <RemoteList
     title="Photos"
     endpoint="https://jsonplaceholder.typicode.com/photos"
-    fields={["title", "url"]}
+    fields={["title"]}
+    imageField="url"
   />
 );
 

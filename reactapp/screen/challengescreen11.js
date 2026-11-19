@@ -1,44 +1,12 @@
 import React from "react";
-import {View, Text, Stylesheet, FlatList} from "react-native";
+import RemoteList from "../components/RemoteList";
 
-class PostsScreen extends React.Component{
+const ChallengeCommentsScreen = () => (
+  <RemoteList
+    title="Comments"
+    endpoint="https://jsonplaceholder.typicode.com/comments"
+    fields={["name"]}
+  />
+);
 
-    constructor(){
-        super();
-        this.state={
-            posts:[]
-        }
-    }
-
-
-async componentDidMount(){
- const data=await fetch("https://jsonplaceholder.typicode.com/comments");
- const jsonData = await data.json();
- this.setState({posts: jsonData});
-}
-
-render(){
-    const {posts} = this.state
-    return(
-        <View>
-            <Text>Posts</Text>
-            <FlatList 
-            keyExtractor={posts => posts.id}
-            data={posts} renderItem={({item})=> (
-                <View>
-                    <Text>{item.id}</Text>
-                    <Text>{item.name}</Text>
-                </View>
-            )
-        }
-            />
-        </View>
-    );
-}
-
-}
-
-// const styles = StyleSheet.create({
-// })
-
-export default PostsScreen;
+export default ChallengeCommentsScreen;

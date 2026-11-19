@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 
 const students = [
   {
@@ -40,13 +40,13 @@ const students = [
 
 
 
-const ListScreen = () => {
+const ChallengeStudentScreen = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selectedStudent = students[selectedIndex];
   const fullName = selectedStudent.firstName + " " + selectedStudent.surname;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Student Profile</Text>
 
       <View style={styles.switcher}>
@@ -89,37 +89,23 @@ const ListScreen = () => {
 
         <Text style={styles.label}>Phone:</Text>
         <Text style={styles.value}>{selectedStudent.phone}</Text>
-
-      
       </View>
 
 
-      <Text style={styles.thingsTheyDontLikeTitle}>Things They Don't Like:</Text>
-      <FlatList
-        data={selectedStudent.thingsTheyDontLike}
-        keyExtractor={(item, index) => `${item}-${index}`}
-        renderItem={({ item }) => (
-          <View style={styles.hobbyItem}>
-            <Text style={styles.hobbyText}>{item}</Text>
-          </View>
-        )}
-      />
+      <Text style={styles.sectionTitle}>Things They Don't Like</Text>
+      {selectedStudent.thingsTheyDontLike.map((item, index) => (
+        <View key={`${item}-${index}`} style={styles.hobbyItem}>
+          <Text style={styles.hobbyText}>{item}</Text>
+        </View>
+      ))}
 
-      <Text style={styles.hobbiesTitle}>Hobbies</Text>
-    
-
- 
-
-      <FlatList
-        data={selectedStudent.hobbies}
-        keyExtractor={(item, index) => `${item}-${index}`}
-        renderItem={({ item }) => (
-          <View style={styles.hobbyItem}>
-            <Text style={styles.hobbyText}>{item}</Text>
-          </View>
-        )}
-      />
-    </View>
+      <Text style={styles.sectionTitle}>Hobbies</Text>
+      {selectedStudent.hobbies.map((item, index) => (
+        <View key={`${item}-${index}`} style={styles.hobbyItem}>
+          <Text style={styles.hobbyText}>{item}</Text>
+        </View>
+      ))}
+    </ScrollView>
   );
 };
 
@@ -181,13 +167,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: "500",
   },
-  hobbiesTitle: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#1f2937",
-    marginBottom: 10,
-  },
-  thingsTheyDontLikeTitle: {
+  sectionTitle: {
     fontSize: 22,
     fontWeight: "700",
     color: "#1f2937",
@@ -207,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListScreen;
+export default ChallengeStudentScreen;

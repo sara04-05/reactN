@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import ProfileScreen from './screen/ProfileScreen';
 import PostScreen from './screen/PostsScreen';
 
+import ChallengeScreen from './screen/challengescreen111';
+
 export default function App() {
-  return (
-    <PostScreen/>  
-  );
+  return <ChallengeScreen/>;
 }
 
 // const styles = StyleSheet.create({
@@ -16,4 +16,4 @@ export default function App() {
 //     alignItems: 'center',
 //     justifyContent: 'center',
 //   },
-// });
+// }); 

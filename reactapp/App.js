@@ -1,19 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import ProfileScreen from './screen/ProfileScreen';
-import PostScreen from './screen/PostsScreen';
-
-import ChallengeScreen from './screen/challengescreen111';
+import { useState } from 'react';
+import ProductScreen from './challenge/screen/ProductScreen';
+import DetailsScreen from './challenge/screen/DetailsScreen';
 
 export default function App() {
-  return <ChallengeScreen/>;
-}
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// }); 
+  if (selectedProduct) {
+    return (
+      <DetailsScreen
+        product={selectedProduct}
+        onBack={() => setSelectedProduct(null)}
+      />
+    );
+  }
+
+  return <ProductScreen onSelect={setSelectedProduct} />;
+}

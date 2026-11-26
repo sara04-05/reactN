@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const sizes = ["S", "M", "L", "XL"];
 
@@ -9,6 +9,7 @@ const DetailsScreen = (props) => {
     const [size, setSize] = useState("M");
 
     return (
+        <View style={styles.page}>
         <View style={styles.container}>
             {/* Top bar */}
             <View style={styles.topBar}>
@@ -21,7 +22,7 @@ const DetailsScreen = (props) => {
 
             {/* Product image */}
             <View style={[styles.imageBox, { backgroundColor: product.color }]}>
-                <Image source={{ uri: product.image }} style={styles.img} />
+                <Text style={styles.emoji}>{product.emoji}</Text>
             </View>
 
             {/* Name and price */}
@@ -30,7 +31,7 @@ const DetailsScreen = (props) => {
                 <Text style={styles.stock}>Available in stock</Text>
             </View>
             <View style={styles.row}>
-                <Text style={styles.price}>${product.price}</Text>
+                <Text style={styles.price}>${product.price.toFixed(2)}</Text>
                 <View style={styles.sizes}>
                     {sizes.map((item) => (
                         <TouchableOpacity
@@ -51,12 +52,20 @@ const DetailsScreen = (props) => {
                 <Text style={styles.cartBtnText}>Add to cart</Text>
             </TouchableOpacity>
         </View>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    page: {
+        flex: 1,
+        backgroundColor: "#f2f2f2",
+        alignItems: "center",
+    },
     container: {
         flex: 1,
+        width: "100%",
+        maxWidth: 480,
         backgroundColor: "white",
         paddingTop: 50,
         paddingHorizontal: 20,
@@ -78,10 +87,10 @@ const styles = StyleSheet.create({
         padding: 20,
         marginVertical: 20,
     },
-    img: {
-        width: "100%",
-        height: 250,
-        borderRadius: 16,
+    emoji: {
+        fontSize: 140,
+        textAlign: "center",
+        paddingVertical: 30,
     },
     row: {
         flexDirection: "row",

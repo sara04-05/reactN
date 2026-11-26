@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 // Design of ONE product card
 const Product = (props) => {
@@ -7,14 +7,14 @@ const Product = (props) => {
         <TouchableOpacity style={styles.card} onPress={props.onPress}>
             <View style={[styles.imageBox, { backgroundColor: props.color }]}>
                 <Text style={styles.heart}>♡</Text>
-                <Image source={{ uri: props.image }} style={styles.img} />
+                <Text style={styles.emoji}>{props.emoji}</Text>
             </View>
-            <Text style={styles.name}>{props.name}</Text>
+            <Text style={styles.name} numberOfLines={1}>{props.name}</Text>
             <View style={styles.row}>
-                <Text style={styles.price}>${props.price}</Text>
-                <TouchableOpacity style={styles.btn}>
+                <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+                <View style={styles.btn}>
                     <Text style={styles.btnText}>Buy</Text>
-                </TouchableOpacity>
+                </View>
             </View>
         </TouchableOpacity>
     );
@@ -22,46 +22,52 @@ const Product = (props) => {
 
 const styles = StyleSheet.create({
     card: {
-        flex: 1,
-        margin: 8,
+        width: "50%",
+        padding: 8,
     },
     imageBox: {
-        borderRadius: 16,
-        padding: 10,
+        borderRadius: 20,
+        paddingTop: 10,
+        paddingHorizontal: 14,
+        paddingBottom: 18,
     },
     heart: {
         textAlign: "right",
         fontSize: 18,
-        color: "red",
+        color: "#e53935",
     },
-    img: {
-        width: "100%",
-        height: 100,
-        borderRadius: 8,
+    emoji: {
+        fontSize: 64,
+        textAlign: "center",
+        marginTop: 4,
     },
     name: {
         fontWeight: "bold",
-        marginTop: 8,
+        marginTop: 10,
+        marginLeft: 4,
     },
     row: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 4,
+        marginTop: 6,
+        marginLeft: 4,
     },
     price: {
-        color: "orange",
+        color: "#f59e0b",
         fontWeight: "bold",
+        fontSize: 16,
     },
     btn: {
         backgroundColor: "black",
-        borderRadius: 10,
-        paddingHorizontal: 12,
-        paddingVertical: 4,
+        borderRadius: 12,
+        paddingHorizontal: 14,
+        paddingVertical: 5,
     },
     btnText: {
         color: "white",
         fontSize: 12,
+        fontWeight: "bold",
     },
 });
 

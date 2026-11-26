@@ -1,39 +1,36 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Text, FlatList, StyleSheet } from "react-native";
 import Product from "../components/Product";
-import products from "../data/products.json";
+import products from "../data/products.json"; // product data
 
+// Screen that shows all products
 const ProductScreen = () => {
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={products}
-                keyExtractor={(item) => String(item.id)}
-                ListHeaderComponent={<Text style={styles.title}>Products</Text>}
-                renderItem={({ item }) => (
-                    <Product
-                        name={item.name}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                    />
-                )}
-            />
-        </View>
+        <FlatList
+            style={styles.list}
+            data={products}
+            keyExtractor={(item) => item.id.toString()}
+            ListHeaderComponent={<Text style={styles.title}>Products</Text>}
+            renderItem={({ item }) => (
+                <Product
+                    name={item.name}
+                    description={item.description}
+                    price={item.price}
+                    image={item.image}
+                />
+            )}
+        />
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#f5f5f5",
-        paddingTop: 50,
+    list: {
+        marginTop: 50,
     },
     title: {
         textAlign: "center",
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 16,
     },
 });
 

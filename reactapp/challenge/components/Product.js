@@ -1,41 +1,67 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 // Design of ONE product card
 const Product = (props) => {
     return (
         <View style={styles.card}>
-            <Image source={{ uri: props.image }} style={styles.img} />
+            <View style={[styles.imageBox, { backgroundColor: props.color }]}>
+                <Text style={styles.heart}>♡</Text>
+                <Image source={{ uri: props.image }} style={styles.img} />
+            </View>
             <Text style={styles.name}>{props.name}</Text>
-            <Text>{props.description}</Text>
-            <Text style={styles.price}>${props.price}</Text>
+            <View style={styles.row}>
+                <Text style={styles.price}>${props.price}</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Buy</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "white",
+        flex: 1,
+        margin: 8,
+    },
+    imageBox: {
         borderRadius: 16,
-        margin: 16,
-        padding: 16,
-        elevation: 2,
+        padding: 10,
+    },
+    heart: {
+        textAlign: "right",
+        fontSize: 18,
+        color: "red",
     },
     img: {
         width: "100%",
-        height: 180,
-        borderRadius: 12,
+        height: 100,
+        borderRadius: 8,
     },
     name: {
-        fontSize: 18,
         fontWeight: "bold",
-        marginTop: 10,
+        marginTop: 8,
+    },
+    row: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: 4,
     },
     price: {
-        fontSize: 18,
+        color: "orange",
         fontWeight: "bold",
-        color: "green",
-        marginTop: 10,
+    },
+    btn: {
+        backgroundColor: "black",
+        borderRadius: 10,
+        paddingHorizontal: 12,
+        paddingVertical: 4,
+    },
+    btnText: {
+        color: "white",
+        fontSize: 12,
     },
 });
 

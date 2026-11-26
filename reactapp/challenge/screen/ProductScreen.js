@@ -1,31 +1,46 @@
 import React from "react";
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import Product from "../components/Product";
 import products from "../data/products.json";
 
 const ProductScreen = () => {
     return (
-        <ScrollView>
-            <Text style={styles.title}>Products</Text>
-            {products.map((item) => (
-                <Product
-                    key={item.id}
-                    name={item.name}
-                    description={item.description}
-                    price={item.price}
-                    image={item.image}
-                />
-            ))}
-        </ScrollView>
+        <View style={styles.container}>
+            <Text style={styles.title}>Online Shop</Text>
+            <Text style={styles.subtitle}>Recommendation</Text>
+            <FlatList
+                data={products}
+                numColumns={2}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <Product
+                        name={item.name}
+                        price={item.price}
+                        image={item.image}
+                        color={item.color}
+                    />
+                )}
+            />
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "white",
+        paddingTop: 50,
+        paddingHorizontal: 8,
+    },
     title: {
-        textAlign: "center",
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: "bold",
-        marginVertical: 40,
+        marginLeft: 8,
+    },
+    subtitle: {
+        fontWeight: "bold",
+        marginLeft: 8,
+        marginVertical: 12,
     },
 });
 

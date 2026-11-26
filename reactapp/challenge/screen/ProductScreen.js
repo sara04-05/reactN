@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import Product from "../components/Product";
 import products from "../data/products.json";
 
-const ProductScreen = () => {
+const ProductScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Online Shop</Text>
@@ -18,6 +18,7 @@ const ProductScreen = () => {
                         price={item.price}
                         image={item.image}
                         color={item.color}
+                        onPress={() => props.onSelect(item)}
                     />
                 )}
             />

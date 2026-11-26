@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 // Design of ONE product card
 const Product = (props) => {
     return (
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={props.onPress}>
             <View style={[styles.imageBox, { backgroundColor: props.color }]}>
                 <Text style={styles.heart}>♡</Text>
                 <Image source={{ uri: props.image }} style={styles.img} />
@@ -16,7 +16,7 @@ const Product = (props) => {
                     <Text style={styles.btnText}>Buy</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

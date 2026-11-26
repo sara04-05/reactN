@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import ProfileScreen from './screen/ProfileScreen';
 import PostScreen from './screen/PostsScreen';
 
-import ChallengeScreen from './screen/challengescreen111';
+import ProductScreen from './screen/ProductScreen';
 
 export default function App() {
-  return <ChallengeScreen/>;
+  return <ProductScreen/>;
 }
 
 // const styles = StyleSheet.create({

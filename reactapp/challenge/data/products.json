@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "description": "Over-ear Bluetooth headphones with noise cancelling.",
+    "price": 79.99,
+    "image": "https://picsum.photos/seed/headphones/400/300",
+    "color": "#E6D9F2"
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "description": "Fitness tracking, heart rate monitor and notifications.",
+    "price": 129.5,
+    "image": "https://picsum.photos/seed/watch/400/300",
+    "color": "#FCE3B8"
+  },
+  {
+    "id": 3,
+    "name": "Backpack",
+    "description": "Water-resistant backpack with a laptop compartment.",
+    "price": 49.0,
+    "image": "https://picsum.photos/seed/backpack/400/300",
+    "color": "#D4EDDA"
+  },
+  {
+    "id": 4,
+    "name": "Mechanical Keyboard",
+    "description": "Compact RGB keyboard with tactile switches.",
+    "price": 89.9,
+    "image": "https://picsum.photos/seed/keyboard/400/300",
+    "color": "#E3E3EC"
+  },
+  {
+    "id": 5,
+    "name": "Desk Lamp",
+    "description": "LED lamp with adjustable brightness and color temperature.",
+    "price": 24.99,
+    "image": "https://picsum.photos/seed/lamp/400/300",
+    "color": "#CFE8F7"
+  }
+]
